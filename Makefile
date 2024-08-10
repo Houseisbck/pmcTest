@@ -1,8 +1,10 @@
 # Makefile
-up: env JWTAuth build migrate
+up: env vendor JWTAuth build migrate
 
 env:
 	cp .env.example .env
+vendor:
+	composer install
 JWTAuth:
 	php artisan jwt:secret
 build:

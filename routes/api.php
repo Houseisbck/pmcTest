@@ -18,8 +18,8 @@ Route::group([
     'middleware' => 'api',
     'prefix' => 'users'
 ], function ($router) {
-    Route::post('/create', [UserController::class, 'create'])->name('create');
-    Route::get('/{id}', [UserController::class, 'get'])->name('get');
-    Route::put('/update', [UserController::class, 'update'])->name('update');
-    Route::delete('/{id}', [UserController::class, 'delete'])->name('delete');
+    Route::post('/create', [UserController::class, 'create'])->middleware('auth:api')->name('create');
+    Route::get('/{id}', [UserController::class, 'get'])->middleware('auth:api')->name('get');
+    Route::put('/update', [UserController::class, 'update'])->middleware('auth:api')->name('update');
+    Route::delete('/{id}', [UserController::class, 'delete'])->middleware('auth:api')->name('delete');
 });
