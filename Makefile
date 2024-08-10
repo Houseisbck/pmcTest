@@ -1,11 +1,10 @@
 # Makefile
-up: package config JWTAuth build migrate
+up: env JWTAuth build migrate
 
-package:
-    composer install
+env:
+	cp .env.example .env
 JWTAuth:
-    php artisan vendor:publish --provider="PHPOpenSourceSaver\JWTAuth\Providers\LaravelServiceProvider"
-    php artisan jwt:secret
+	php artisan jwt:secret
 build:
 	docker compose -f deploy/docker-compose.yml --env-file ./.env up --build
 migrate:
