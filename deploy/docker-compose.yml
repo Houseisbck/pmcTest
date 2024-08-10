@@ -11,7 +11,7 @@ services:
             dockerfile: ./deploy/Dockerfile
         # При необходимости выделите столько томов, сколько нужно.
         volumes:
-            - ../storage/app:/var/www/html/storage/app
+            - ../:/var/www/html
         environment:
             APP_NAME: ${APP_NAME}
             APP_ENV: ${APP_ENV}
@@ -33,6 +33,8 @@ services:
             MAIL_ENCRYPTION: ${MAIL_ENCRYPTION}
             MAIL_FROM_ADDRESS: ${MAIL_FROM_ADDRESS}
             MAIL_FROM_NAME: ${MAIL_FROM_NAME}
+            JWT_SECRET: ${JWT_SECRET}
+            JWT_ALGO: ${JWT_ALGO}
         ports:
             - "8080:80"
         networks:
